@@ -1,4 +1,4 @@
-# netlfix-webapp-clone
+# netflix-webapp-clone
 
 ## Project setup
 ```
