@@ -35,7 +35,7 @@
               <li><a href="" class="us">English</a></li>
               <li><a href="" class="sk">Slovak</a></li>
             </ul>
-          </div>
+    </div>
     <div>Netflix Slovakia</div>
 </div>
   
@@ -49,7 +49,7 @@ export default {
 
 <style scoped>
 .container-footer {
-    width: 80%;
+    width: 50%;
     height: 40vh;
     margin: 0 auto;
     color: grey;
