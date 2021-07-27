@@ -1,14 +1,15 @@
 <template>
-   <nav class="nav">
-      <div>
+    <nav class="nav">
+      <div class="nav-left">
           <div>
             <img src="../assets/netflix.jpg" class="img"> 
           </div>
+          <div class="line">&nbsp;</div>
           <div class="help">Help Centre</div>
       </div>
-      <div>
-          <div>Join Netflix</div>
-          <div>Sign in</div>
+      <div class="nav-right">
+          <button class="btn-join">Join Netflix</button>
+          <button class="btn-red">Sign in</button>
       </div>
   </nav>
   <section class="container">
@@ -122,10 +123,6 @@ export default {
 .container-2 {
     width: 50% !important;
     margin: 0 auto;
-}
-
-.nav {
-    height: 10vh;
 }
 
 footer {

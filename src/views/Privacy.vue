@@ -1,6 +1,16 @@
 <template>
-  <nav>
-
+   <nav class="nav">
+      <div class="nav-left">
+          <div>
+            <img src="../assets/netflix.jpg" class="img"> 
+          </div>
+          <div class="line">&nbsp;</div>
+          <div class="help">Help Centre</div>
+      </div>
+      <div class="nav-right">
+          <button class="btn-join">Join Netflix</button>
+          <button class="btn-red">Sign in</button>
+      </div>
   </nav>
   <section class="container">
       <div class="container-2">

@@ -1,14 +1,15 @@
 <template>
   <nav class="nav">
-      <div>
+      <div class="nav-left">
           <div>
             <img src="../assets/netflix.jpg" class="img"> 
           </div>
+          <div class="line">&nbsp;</div>
           <div class="help">Help Centre</div>
       </div>
-      <div>
-          <div>Join Netflix</div>
-          <div>Sign in</div>
+      <div class="nav-right">
+          <button class="btn-join">Join Netflix</button>
+          <button class="btn-red">Sign in</button>
       </div>
   </nav>
   <section class="container">
@@ -268,9 +269,27 @@ span {
 .nav {
     background: black;
     height: 6.2vh;
+    color: white;
+    font-size: 2rem;
+    width: 50vw;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
-    color: white;
+}
+
+.nav-left {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   align-items: center;
+}
+
+.nav-right {
+   display: flex;
+   flex-direction: row;
+   margin-left: auto;
+   gap: 2rem;
+   align-items: center;
 }
 
 ol { 
@@ -311,8 +330,25 @@ a:hover {
 }
 
 .img {
-  margin-top: 4rem;
+  width: 12rem;
+  height: 8rem;
+  padding-top: 1rem;
   margin-left: 2rem;
+  cursor: pointer;
+}
+
+.line {
+  margin-right: 1.5rem;
+  border-left: 0.1rem solid white;
+}
+
+.help {
+  color:white;
+  cursor: pointer;
+}
+
+.help:hover {
+  border-bottom: 0.1rem solid white;
 }
 
 li:before { 
@@ -330,15 +366,22 @@ li:before {
 
 .container-2 {
     width: 50%;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .back {
     color:red;
+    cursor: pointer;
+}
+
+.back:hover {
+    color:red;
+    cursor: pointer;
+    border-bottom: 0.1rem solid red;
 }
 
 .btn {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     border: 0.1rem solid black;
     border-radius: 0.1rem;
     padding: 0.5rem 1.2rem;
@@ -346,6 +389,25 @@ li:before {
     background: white;
     text-transform: uppercase;
     font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-join {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 0.1rem solid white;
+  background: black;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-join:hover {
+  color: rgb(87, 87, 87);
+  transition: .1s ease-in; 
+  transition-delay: 0.05s;
+  background: rgb(245, 243, 243);
 }
 
 .btn:hover {
