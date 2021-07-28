@@ -1,13 +1,11 @@
-<template>
+<template>    
 <section class="container">
-    <div>
-        <img src="../assets/netflix.jpg" class="img">
-    </div>
+    <img src="../assets/netflix.jpg" class="img">
     <div class="signin">
         <h1>Sign In</h1>
-        <form class="form">
-            <input type="email" class="email" placeholder="Email or phone number" required>
-            <input type="password" class="password" placeholder="Password" required>
+        <form @submit.prevent="handleSubmit" class="form">
+            <input type="email" class="email" placeholder="Email or phone number" required v-model="email">
+            <input type="password" class="password" placeholder="Password" required v-model="password">
             <button class="btn-red">Sign In</button>
         </form>
         <div class="remember">
@@ -16,16 +14,14 @@
                 <p>Remember me</p>
             </div>
             
-            <p>Need help?</p>
+            <p class="help">Need help?</p>
         </div>
-        <div class="facebook">Login with facebook</div>
+        <p class="facebook">Login with facebook</p>
         <p class="netflix">New to Netflix? <a class="sign">Sign up now</a>.</p>
         <p class="captcha">This page is protected by Google reCAPTCHA to ensure you're not
         a bot.<a class="learn"> Learn more.</a></p> 
     </div>
-    
-</section>
-<footer>
+    <footer>
     <div class="footer">
         <div class="lang-menu">
             <div class="selected-lang">
@@ -47,12 +43,24 @@
         </div>
     </div>
   </footer>
-    
+</section>
 </template>
 
 <script>
-export default {
+import { ref } from '@vue/reactivity'
 
+export default {
+    setup() {
+        //refs
+        const email = ref('')
+        const password = ref('')
+
+        const handleSubmit = () => {
+            console.log(email.value, password.value)
+        }
+
+        return { email, password, handleSubmit }
+    }
 }
 </script>
 
@@ -61,30 +69,32 @@ export default {
     background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.4),rgba(0,0,0,0.8)), url("../assets/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 75vh;
+    height: 100vh;
     color: grey;
     position: relative;
+    overflow-y: hidden;
 }
 
 h1 {
     color: white;
     margin-bottom: 2rem;
+    font-size: 4rem;
 }
 
 .img {
-    position: absolute;
-    top: 0;
-    left: 1rem;
+    width: 20rem;
+    height: 14rem;
+    margin-left: 4rem;
 }
 
 .signin {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.6);
     margin-top: 15rem;
     width: 45rem;
     padding: 6rem;
     display: flex;
     flex-direction: column;
-    margin: 18rem auto;
+    margin: 5rem auto;
     border-radius: 0.5rem;
 }
 
@@ -145,12 +155,18 @@ h1 {
     color: white;
 }
 
+.help:hover {
+    border-bottom: 0.1rem solid grey;
+}
+
 .facebook {
     margin-bottom: 2rem;
+    font-size: 2rem;
 }
 
 .netflix {
     margin-bottom: 2rem;
+    font-size: 2rem;
 }
 
 .btn-red {
@@ -160,13 +176,15 @@ h1 {
 }
 
 footer {
-    background: rgba(0,0,0,0.7);
-    height: 15vh;
+    background: rgba(0, 0, 0, 0.6);
+    height: 20vh;
 }
 
 .footer {
     width: 50%;
-    margin: 0 auto;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: row;
 }
 
 .lang-menu {
