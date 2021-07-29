@@ -6,6 +6,7 @@
         <form @submit.prevent="handleSubmit" class="form">
             <input type="email" class="email" placeholder="Email or phone number" required v-model="email">
             <input type="password" class="password" placeholder="Password" required v-model="password">
+            <div class="error">{{ error }}</div>
             <button class="btn-red">Sign In</button>
         </form>
         <div class="remember">
@@ -48,18 +49,21 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import useSignin from '../composables/useSignin'
 
 export default {
     setup() {
+        const { error, signin } = useSignin()
+
         //refs
         const email = ref('')
         const password = ref('')
 
-        const handleSubmit = () => {
-            console.log(email.value, password.value)
+        const handleSubmit = async () => {
+            await signin(email.value, password.value)
         }
 
-        return { email, password, handleSubmit }
+        return { email, password, handleSubmit, error }
     }
 }
 </script>

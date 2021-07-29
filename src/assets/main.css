@@ -70,3 +70,9 @@ a {
     background: #B8B8B8;
 }
 
+/* Error */
+.error {
+    color: orange;
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+}
