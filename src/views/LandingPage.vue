@@ -16,7 +16,9 @@
             </ul>
           </div>
           <div>
-            <button class="btn-red">Sign in</button>
+            <router-link :to="{ name: 'Signin'}">
+              <button class="btn-red">Sign in</button>
+            </router-link> 
           </div>   
         </div>
     </div>
@@ -187,7 +189,7 @@
 <script>
 import '../assets/main.css';
 import Email from '../components/Email.vue'  
-import Footer from '../components/Footer.vue'  
+import Footer from '../components/Footer.vue'
 
 export default {
   components: {

@@ -51,9 +51,11 @@
 import { ref } from '@vue/reactivity'
 import useSignin from '../composables/useSignin'
 
+
 export default {
     setup() {
         const { error, signin } = useSignin()
+       
 
         //refs
         const email = ref('')
@@ -61,6 +63,7 @@ export default {
 
         const handleSubmit = async () => {
             await signin(email.value, password.value)
+            
         }
 
         return { email, password, handleSubmit, error }

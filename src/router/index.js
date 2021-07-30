@@ -6,6 +6,7 @@ import CorporateInfo from '../views/CorporateInfo.vue'
 import LegalNotices from '../views/LegalNotices.vue'
 import ContactUs from '../views/ContactUs.vue'
 import UserProfiles from '../views/UserProfiles.vue'
+import Browse from '../views/Browse.vue'
 import Signin from '../components/Signin.vue'
 import Faq from '../components/Faq.vue'
 
@@ -53,6 +54,11 @@ const routes = [
     path: '/userprofiles',
     name: 'UserProfiles',
     component: UserProfiles
+  },
+  {
+    path: '/browse',
+    name: 'Browse',
+    component: Browse
   }
 ]
 
