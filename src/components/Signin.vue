@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
+import { ref } from 'vue'
 import useSignin from '../composables/useSignin'
 
 
@@ -62,8 +62,10 @@ export default {
         const password = ref('')
 
         const handleSubmit = async () => {
-            await signin(email.value, password.value)
-            
+            const res = await signin(email.value, password.value)
+            if(!error.value) {
+                console.log('user signed in')
+            }
         }
 
         return { email, password, handleSubmit, error }

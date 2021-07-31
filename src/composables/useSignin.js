@@ -11,7 +11,7 @@ const signin = async (email, password) => {
         if(!res) {
             throw new Error('Could not complete signin')
         }
-        console.log(res.user)
+        error.value = null
     } catch(err) {
         console.log(err.message)
         error.value = err.message
