@@ -8,6 +8,7 @@ import ContactUs from '../views/ContactUs.vue'
 import UserProfiles from '../views/UserProfiles.vue'
 import Signin from '../components/Signin.vue'
 import Faq from '../components/Faq.vue'
+import Home from '../views/Home.vue'
 
 const routes = [
   {
@@ -53,6 +54,11 @@ const routes = [
     path: '/userprofiles',
     name: 'UserProfiles',
     component: UserProfiles
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home
   }
 ]
 
