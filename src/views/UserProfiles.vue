@@ -5,14 +5,21 @@
   <section class="container">
       <h1>Who is watching right now?</h1>
       <div class="profiles">
-          <div class="user">
+          
+          <router-link :to="{ name: 'Billboard'}">
+            <div class="user">
               <img class="img" src="../assets/user.jpg" alt="Lukas">
               <p>Lukas</p>
-          </div>
-          <div class="user">
+            </div>
+          </router-link>
+        
+          <router-link :to="{ name: 'Billboard'}">
+            <div class="user">
               <img class="img" src="../assets/netflixkids.png" alt="Children">
               <p>Children</p>
-          </div>
+            </div>
+          </router-link>
+        
           <div class="user">
               <img class="img" src="../assets/add.png" alt="Add">
               <p>Add a profile</p>

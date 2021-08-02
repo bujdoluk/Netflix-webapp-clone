@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { projectAuth  } from '../firebase/config'
 import LandingPage from '../views/LandingPage.vue'
 import TermsOfUse from '../views/TermsOfUse.vue'
 import Privacy from '../views/Privacy.vue'
@@ -6,9 +7,20 @@ import CorporateInfo from '../views/CorporateInfo.vue'
 import LegalNotices from '../views/LegalNotices.vue'
 import ContactUs from '../views/ContactUs.vue'
 import UserProfiles from '../views/UserProfiles.vue'
-import Signin from '../components/Signin.vue'
 import Faq from '../components/Faq.vue'
 import Home from '../views/Home.vue'
+import Billboard from '../views/Billboard.vue'
+
+// auth route guard
+const requireAuth = (to, from, next) => {
+  let user = projectAuth.currentUser
+  console.log('current user in auth guard', user)
+  if(!user) {
+    next({ name: 'Home' })
+  } else {
+    next()
+  }
+}
 
 const routes = [
   {
@@ -32,11 +44,6 @@ const routes = [
     component: CorporateInfo
   },
   {
-    path: '/signin',
-    name: 'Signin',
-    component: Signin
-  },
-  {
     path: '/faq',
     name: 'Faq',
     component: Faq
@@ -53,12 +60,19 @@ const routes = [
   {
     path: '/userprofiles',
     name: 'UserProfiles',
-    component: UserProfiles
+    component: UserProfiles,
+    beforeEnter: requireAuth
   },
   {
     path: '/home',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/billboard',
+    name: 'Billboard',
+    component: Billboard,
+    beforeEnter: requireAuth
   }
 ]
 

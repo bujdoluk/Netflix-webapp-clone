@@ -22,13 +22,19 @@
         <p class="captcha">This page is protected by Google reCAPTCHA to ensure you're not
         a bot.<a class="learn"> Learn more.</a></p> 
     </div>
+    <footer class="footer">
+          <router-link :to="{ name: 'TermsOfUse'}"><div class="link">Terms of Use</div></router-link>
+          <router-link :to="{ name: 'Privacy'}"><div class="link">Privacy</div></router-link>
+          <div class="cookies"><span class="link">Cookies Preferences</span></div>
+          <router-link :to="{ name: 'CorporateInfo'}"><div class="link">Corporate Information</div></router-link> 
+    </footer>
 </section>
 </template>
 
 <script>
 import { ref } from 'vue'
 import useLogin from '../composables/useLogin'
-
+import { useRouter } from 'vue-router'
 
 export default {
     setup(props, context) {
@@ -57,7 +63,6 @@ export default {
     height: 100vh;
     color: grey;
     position: relative;
-    overflow-y: hidden;
 }
 
 h1 {
@@ -74,12 +79,11 @@ h1 {
 
 .signin {
     background: rgba(0,0,0,0.6);
-    margin-top: 10rem;
     width: 45rem;
-    padding: 6rem;
+    padding: 6rem 6rem 2rem 6rem;
     display: flex;
     flex-direction: column;
-    margin: 5rem auto;
+    margin: 10rem auto;
     border-radius: 0.5rem;
 }
 
@@ -145,7 +149,7 @@ h1 {
 }
 
 .facebook {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: 2rem;
 }
 
@@ -158,5 +162,31 @@ h1 {
     padding: 2rem;
     font-weight: bold;
     font-size: 1.7rem;
+}
+
+/* Footer */
+.footer {
+  height: 15%;
+  background: rgba(0,0,0,0.7);
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.7rem;
+  color: grey;
+}
+
+.link {
+  color: grey;
+  margin-top: 3rem;
+}
+
+.link:hover {
+  border-bottom: 0.1rem solid grey;
+}
+
+.cookies {
+    margin-top: 3rem;
 }
 </style>
