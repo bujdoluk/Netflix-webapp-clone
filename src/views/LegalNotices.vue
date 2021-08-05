@@ -72,10 +72,13 @@
           </div>
       </div>
   </section>
+  <FooterSmall/>
 </template>
 
 <script>
+import FooterSmall from  '../components/FooterSmall.vue'
 export default {
+    components: { FooterSmall }
 
 }
 </script>

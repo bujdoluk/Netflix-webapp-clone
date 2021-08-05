@@ -28,7 +28,7 @@
                 <h4>Download the Netflix app:</h4>
                 <img class="img google" src="../assets/googleplay.png" alt="Google Play">
                 <img class="img" src="../assets/appstore.png" alt="App Store">
-                <p>Questions? <a>Learn how to contact us from the Netflix app!</a></p>
+                <p>Questions? <a class="a">Learn how to contact us from the Netflix app!</a></p>
                 <div class="border">&nbsp;</div>
 
                 <h3>Call us from any phone</h3>
@@ -46,11 +46,11 @@
             <div>
                 <h4>Popular Questions</h4>
                 <ul>
-                    <li><span>How do I reset my password?</span></li>
-                    <li><span>How can I request a TV show or movie?</span></li>
-                    <li><span>How do I cancel my account?</span></li>
-                    <li><span>Why isn't Netflix Working?</span></li>
-                    <li><span>What is Netflix?</span></li>
+                    <li class="li"><span class="question-link">How do I reset my password?</span></li>
+                    <li class="li"><span class="question-link">How can I request a TV show or movie?</span></li>
+                    <li class="li"><span class="question-link">How do I cancel my account?</span></li>
+                    <li class="li"><span class="question-link">Why isn't Netflix Working?</span></li>
+                    <li class="li"><span class="question-link">What is Netflix?</span></li>
                 </ul>
                 <h4>Find a different answer</h4>
                 <input type="text">
@@ -58,10 +58,14 @@
         </div>
       </div>
   </section>
+  <FooterSmall/>
+
 </template>
 
 <script>
+import FooterSmall from  '../components/FooterSmall.vue'
 export default {
+    components: { FooterSmall }
 
 }
 </script>
@@ -180,12 +184,12 @@ export default {
     border-bottom: 0.1rem solid red;
 }
 
-a {
+.a {
     text-decoration: none;
     color:red;
 }
 
-a:hover {border-bottom: 0.1rem solid red;}
+.a:hover {border-bottom: 0.1rem solid red;}
 
 img {
     width: 13rem;
@@ -215,9 +219,9 @@ img {
     background: rgb(243, 243, 243);
 }
 
-li {margin: 1rem 0 1rem 2rem;}
+.li {margin: 1rem 0 1rem 2rem;}
 
-span:hover {
+.question-link:hover {
     color: red;
     border-bottom: 0.1rem solid red;
 }
@@ -229,4 +233,5 @@ h3 {margin-bottom: 1.5rem;}
 h4 {margin-bottom: 1.5rem;}
 
 p {margin-bottom: 2rem;}
+
 </style>

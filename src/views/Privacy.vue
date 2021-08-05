@@ -142,33 +142,13 @@
         </ul>
       </div>
   </section>
-  <footer>
-    <div class="footer">
-        <div class="lang-menu">
-            <div class="selected-lang">
-                English
-            </div>
-            <ul>
-                <li><a href="" class="de">German</a></li>
-                <li><a href="" class="us">English</a></li>
-                <li><a href="" class="sk">Slovak</a></li>
-            </ul>
-        </div>
-        <div>
-            <div class="ul">
-                <div><a href="">Terms of Use</a></div>
-                <div><a href="">Privacy</a></div>
-                <div><a href="">Cookies Preferences</a></div>
-                <div><a href="">Corporate Information</a></div>
-            </div>
-        </div>
-    </div>
-  </footer>
+  <FooterSmall/> 
 </template>
 
 <script>
+import FooterSmall from  '../components/FooterSmall.vue'
 export default {
-
+    components: { FooterSmall }
 }
 </script>
 
