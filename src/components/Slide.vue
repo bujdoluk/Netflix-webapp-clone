@@ -1,166 +1,259 @@
 <template>
-  <div class="container">
-      <div class="inner">
-          <div class="track">
-            <div class="card-container">
-                <div class="card">
-                    <div class="img">1</div>
-                    <div class="info">
-                        Title 1
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="img">2</div>
-                    <div class="info">
-                        Title 2
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="img">3</div>
-                    <div class="info">
-                        Title 3
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="img">4</div>
-                    <div class="info">
-                        Title 4
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="img">5</div>
-                    <div class="info">
-                        Title 5
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="img">6</div>
-                    <div class="info">
-                        Title 6
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="img">7</div>
-                    <div class="info">
-                        Title 7
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <div class="img">8</div>
-                    <div class="info">
-                        Title 8
-                    </div>
-                </div>
-            </div>
+  <div class="carousel-container">
+  <div class="carousel-inner">
+    <div class="track" >
+      <div class="card-container">
+        <div class="card">
+          <div class="img">1</div>
+          <div class="info" >
+            Title 1
           </div>
+        </div>
       </div>
-      <div class="nav">
-        <button class="prev">
-            <span class="material-icons">
-                keyboard_arrow_left
-            </span>
-        </button>
-        <button class="next">
-            <span class="material-icons">
-                keyboard_arrow_right
-            </span>
-        </button>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">2</div>
+          <div class="info">
+            Title 2
+          </div>
+        </div>
       </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">3</div>
+          <div class="info">
+            Title 3
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">4</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">5</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">6</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">7</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">8</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">9</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">9</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">9</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">9</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">9</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="img">9</div>
+          <div class="info">
+            Title 1
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="nav">
+    <button class="prev">
+      <i class="material-icons">
+      keyboard_arrow_left
+      </i>
+    </button>
+    <button class="next">
+      <i class="material-icons">
+      keyboard_arrow_right
+      </i>
+    </button>
+  </div>
+</div>
 </template>
 
 <script>
-export default {
+import { ref } from 'vue'
+import env from '@/env.js'
 
+export default {
+    mounted() {
+        const prev  = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+
+        const track = document.querySelector('.track');
+
+        let carouselWidth = document.querySelector('.carousel-container').offsetWidth;
+
+        window.addEventListener('resize', () => {
+            carouselWidth = document.querySelector('.carousel-container').offsetWidth;
+        })
+
+        let index = 0;
+
+        next.addEventListener('click', () => {
+            index++;
+            prev.classList.add('show');
+            track.style.transform = `translateX(-${index * carouselWidth}px)`;
+            
+            if (track.offsetWidth - (index * carouselWidth) < carouselWidth) {
+                next.classList.add('hide');
+            }
+        })
+
+        prev.addEventListener('click', () => {
+            index--;
+            next.classList.remove('hide');
+            if (index === 0) {
+                prev.classList.remove('show');
+            }
+            track.style.transform = `translateX(-${index * carouselWidth}px)`;
+        })
+
+    }
 }
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-.container {
-    width: 128rem;
-    margin: 5rem auto;
-    min-height: 20rem;
-    position: relative;
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+.carousel-container {
+  width: 1280px;
+  margin: 50px auto;
+  min-height: 200px;
+  position: relative;
 }
-
-.inner {
-     overflow: hidden;
+@media screen and (max-width: 768px) {
+  .carousel-container {
+    width: 80%;
+  }
 }
-
-.track {
-    display: flex;
+@media screen and (max-width: 1024px) {
+  .carousel-container {
+    width: 85%;
+  }
 }
-
-.card-container {
-    width: 25.9rem;
-    height: 25rem;
-    flex-shrink: 0;
-    padding-right: 1.5rem;
-    box-sizing: border-box;
+.carousel-container .carousel-inner {
+  overflow: hidden;
 }
-
-.card {
-    width: 100%;
-    height: 100%;
-    background: #ccc;
-    border: 0.1rem solid #ccc;
-    box-sizing: border-box;
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
+.carousel-container .track {
+  display: inline-flex;
+  transition: transform 0.5s;
+}
+.carousel-container .card-container {
+  width: 259px;
+  flex-shrink: 0;
+  height: 250px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+.carousel-container .card-container .card {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.nav button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.nav .prev {
+  left: -30px;
+  display: none;
+}
+.nav .prev.show {
+  display: block;
+}
+.nav .next {
+  right: -30px;
+}
+.nav .next.hide {
+  display: none;
 }
 
 .card > * {
-    flex: 1;
+  flex: 1;
+}
+.card .img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+.card .info {
+  flex-basis: 40px;
+  background: #333;
+  color: #fff;
+  flex-grow: 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-.info {
-    flex-basis: 4rem;
-    background: #333;
-    color: #fff;
-    flex-grow: 0;
-    padding: 1rem;
-    box-sizing: border-box;
-}
-
-.img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-}
-
-.nav button {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    border: 0.1rem solid #aaa;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
-
-.nav .prev {
-    left: -3rem;
-}
-
-.nav .next {
-    right: -3rem;
-}
 </style>
