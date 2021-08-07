@@ -13,10 +13,13 @@
 
         <div class="nav-right">
             <form @submit.prevent="SearchMovies()" class="search-box">
-                <input type="text" placeholder="What are you looking for?" v-model="search">
-                <input type="submit" value="Search">
+                <input type="text" placeholder="What are you looking for?" v-model="search" class="search">
+                <!-- <span class="material-icons close">
+                    close
+                </span> -->
+                <input class="search-button" type="submit" value="Search" v-on:click="isHidden = !isHidden">
             </form>
-            <p>Hi {{ user.displayName }}</p>
+            <p class="displayName">Hi {{ user.displayName }}</p>
             <button @click="handleClick" class="logout">Log out</button>
         </div>
         
@@ -25,27 +28,22 @@
     <div class="movie-list">
         <div class="movie" v-for="movie in movies" :key="movie.imdbID">
             <div class="movies">
-<router-link :to="'/movie' + movie.imdbID" class="movie-link">
-                <div class="product-image">
-                    <img :src="movie.Poster" alt="Movie Poster">
-                </div>
-            </router-link>
+                <router-link :to="'/movie/' + movie.imdbID" class="movie-link">
+                    <div class="product-image">
+                        <img :src="movie.Poster" alt="Movie Poster">
+                    </div>
+                </router-link>
             </div>
-            
         </div>
     </div>
 
-    <Slide/>
-    <footer class="footer">
-        <router-link :to="{ name: 'TermsOfUse'}"><div class="link">Terms of Use</div></router-link>
-        <router-link :to="{ name: 'Privacy'}"><div class="link">Privacy</div></router-link>
-        <div class="cookies"><span class="link">Cookies Preferences</span></div>
-        <router-link :to="{ name: 'CorporateInfo'}"><div class="link">Corporate Information</div></router-link> 
-    </footer>
+    <Slide v-if="!isHidden"/>
+    <FooterSmall/>
   </div>
 </template>
 
 <script>
+import FooterSmall from '../components/FooterSmall.vue'
 import getUser from '../composables/getUser'
 import { watch } from 'vue'
 import { useRouter } from 'vue-router'
@@ -55,7 +53,10 @@ import { ref } from 'vue'
 import env from '@/env.js'
 
 export default {
-    components: { Slide },
+    components: { Slide, FooterSmall },
+    data() {
+        return { isHidden: false }
+    },
     setup() {
         const { user } = getUser()
         const router = useRouter()
@@ -83,7 +84,7 @@ export default {
 
         const search = ref('')
         const movies = ref([])
-
+        
         const SearchMovies = () => {
             if(search.value != '') {
                 fetch(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
@@ -131,12 +132,52 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
+}
+
+.displayName {
+    color: white;
 }
 
 p { 
   color: white;
-};
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-button {
+    border: 0.2rem solid white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 0.3rem;
+}
+
+.search {
+    border: 0.2rem solid white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    width: 20rem;
+    z-index: 4;
+    margin-right: 1rem;
+    border-radius: 0.3rem;
+}
+
+.close {
+    position: absolute;
+    left: 70%;
+    top: 20%;
+    z-index: 5;
+}
+
+.logout {
+    padding: 1rem;
+    background: black;
+    color: white;
+    border: 0.1rem solid white;
+    border-radius: 0.3rem;
+}
 
 /* Movie */
 .movie-list {
@@ -145,13 +186,14 @@ p {
     margin: 0rem 0.8rem;
 }
 .movie {
-    background: black;
     display: inline-flex;
-    width: 20%;
+    justify-content: center;
+    margin: 0 auto;
+   
 }
 
 .movies {
- 
+ margin: 3rem;
 }
 
 .movie-link {
@@ -167,8 +209,8 @@ p {
 
 img {
     display: block;
-    width: 100%;
-    height: 27.5rem;
+    width: 30rem;
+    height: 37.5rem;
     object-fit: cover;
 }
 </style>

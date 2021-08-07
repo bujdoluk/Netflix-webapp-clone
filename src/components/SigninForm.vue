@@ -112,7 +112,7 @@ h1 {
 }
 
 .displayName {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     border: 0;
     padding: 1.5rem;
     color: rgb(182, 182, 182);
@@ -122,7 +122,7 @@ h1 {
 }
 
 .email {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     border: 0;
     padding: 1.5rem;
     color: rgb(182, 182, 182);
@@ -179,7 +179,7 @@ h1 {
 
 /* Footer */
 .footer {
-  height: 15%;
+  height: 17%;
   background: rgba(0,0,0,0.7);
   background-repeat: no-repeat;
   display: flex;

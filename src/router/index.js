@@ -10,6 +10,7 @@ import UserProfiles from '../views/UserProfiles.vue'
 import Faq from '../components/Faq.vue'
 import Home from '../views/Home.vue'
 import Billboard from '../views/Billboard.vue'
+import MovieDetail from '../views/MovieDetail.vue'
 
 // auth route guard
 const requireAuth = (to, from, next) => {
@@ -73,7 +74,13 @@ const routes = [
     name: 'Billboard',
     component: Billboard,
     beforeEnter: requireAuth
-  }
+  },
+   {
+     path: '/movie/:id',
+     name: 'MovieDetail',
+     component: MovieDetail,
+     beforeEnter: requireAuth
+   }
 ]
 
 const router = createRouter({

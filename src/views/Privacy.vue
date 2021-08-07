@@ -167,7 +167,7 @@ export default {
 
 .nav {
     background: black;
-    height: 6.2vh;
+    height: 10vh;
     color: white;
     font-size: 2rem;
     width: 50vw;

@@ -16,7 +16,7 @@ export default {
 <style>
 /* Footer */
 .footer {
-  height: 15%;
+  height: 20vh;
   background: rgba(0,0,0,0.7);
   background-repeat: no-repeat;
   display: flex;

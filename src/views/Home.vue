@@ -45,6 +45,7 @@ span {
 }
 
 p {
+    color: white;
     top: 77%;
     left: 50%;
     transform: translateX(-50%);
